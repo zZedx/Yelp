@@ -1,0 +1,38 @@
+.allReviews{
+    height: 400px; 
+    overflow-y: scroll;
+}
+.allReviews form{
+    display: inline-block;
+}
+.leftCard{
+    height: fit-content;
+}
+.showImg{
+    background-color: rgba(128, 128, 128 , 0.4);
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.homeCard img{
+    height: 250px;
+}
+.flash{
+    transition: all 0.4s;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.alert .btn-close{
+    margin-top: -10px;
+}
+#navbarNavDropdown{
+    transition: all 0.5s;
+}
+.allReviews h6{
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    color: #11999E;
+}
