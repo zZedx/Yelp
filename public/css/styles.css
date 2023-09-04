@@ -1,7 +1,17 @@
+/* body{
+    background-color: rgba(0, 0, 0,0.7);
+    background-size: cover;
+    background-position: center;
+    color: white;
+} */
 .allReviews{
     height: 400px; 
     overflow-y: scroll;
 }
+.allReviews::-webkit-scrollbar {
+    display: none;
+}
+
 .allReviews form{
     display: inline-block;
 }
@@ -35,4 +45,14 @@
     font-size: 1.1rem;
     text-decoration: underline;
     color: #11999E;
+}
+
+#map{
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+#cluster-map{
+    width: 100%; 
+    height: 400px;
 }

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const {cloudinary} = require('../cloudinary/index')
 const { required } = require('joi')
 
-
+const options = {toJSON : {virtuals:true}}
 const CampgroundSchema = new Schema({
     title:String,
     price:Number,
@@ -36,6 +36,10 @@ const CampgroundSchema = new Schema({
     {type:Schema.Types.ObjectId,
         ref:'User'
     }
+},options)
+
+CampgroundSchema.virtual('properties.popupText').get(function(){
+    return `<strong><a href="/campgrounds/${this.id}">${this.title}</a></strong>`
 })
 
 CampgroundSchema.post('findOneAndDelete' , async function(doc){
