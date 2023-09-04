@@ -3,6 +3,7 @@ const Review = require('./reviews')
 const User = require('./user')
 const Schema = mongoose.Schema
 const {cloudinary} = require('../cloudinary/index')
+const { required } = require('joi')
 
 
 const CampgroundSchema = new Schema({
@@ -10,6 +11,17 @@ const CampgroundSchema = new Schema({
     price:Number,
     description:String,
     location:String,
+    geometry:{
+        type:{
+            type:String,
+            enum:['Point'],
+            required:true
+        },
+        coordinates:{
+            type:[Number],
+            required:true
+        }
+    },
     image:[{
         path:String,
         name:String,

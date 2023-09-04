@@ -31,18 +31,22 @@ module.exports.showCampground = async (req, res, next) => {
 module.exports.makeNewCampground = async (req, res) => {
     // if(!req.body.campground) throw new ExpressError('Invalid Campground Data' , 400)
     const newCamp = new Campground(req.body.campground)
-
-    const locationGeoData = await geocoder.forwardGeocode({
-        query: newCamp.location,
-        limit: 1
-      })
+    try{
+        const locationGeoData = await geocoder.forwardGeocode({
+            query: newCamp.location,
+            limit: 1
+        })
         .send()
         .then(response => {
-          const match = response.body.features[0].geometry.coordinates;
-          return match
+            const match = response.body.features[0].geometry;
+            return match
         });
-
-    console.log(locationGeoData)
+        newCamp.geometry = locationGeoData
+    }catch(e){
+        req.flash('error' , "Please Enter A Valid Location")
+        return res.redirect('/campgrounds/new')
+    }
+    
     newCamp.owner = req.user
     const imgarr = []
     for(let file of req.files){
@@ -50,6 +54,7 @@ module.exports.makeNewCampground = async (req, res) => {
     }
     newCamp.image = imgarr
     newCamp.save()
+    console.log(newCamp)
     req.flash('success', 'SuccessFully Made A New Campground')
     res.redirect(`/campgrounds/${newCamp._id}`)
 }
