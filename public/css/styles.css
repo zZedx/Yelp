@@ -1,9 +1,10 @@
-/* body{
-    background-color: rgba(0, 0, 0,0.7);
+body{
+    /* background-color: rgba(0, 0, 0,0.7);
     background-size: cover;
     background-position: center;
-    color: white;
-} */
+    color: white; */
+    
+}
 .allReviews{
     height: 400px; 
     overflow-y: scroll;
@@ -54,5 +55,6 @@
 }
 #cluster-map{
     width: 100%; 
+    left: 0;
     height: 400px;
 }

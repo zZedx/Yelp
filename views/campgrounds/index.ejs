@@ -9,7 +9,8 @@
         </form>
     </div>
     <% if(index.length !== 0){ %>
-        <% index.forEach(element => { %>
+        <% const i = index.reverse() %>
+        <% i.forEach(element => { %>
             <div class="card mb-2 homeCard" >
                 <div class="row">
                     <div class="col-md-4">

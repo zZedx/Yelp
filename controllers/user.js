@@ -28,7 +28,7 @@ module.exports.renderLoginForm = (req,res)=>{
 }
 
 module.exports.loginUser = async(req,res)=>{
-    req.flash('success' , 'Welcome')
+    req.flash('success' , `Welcome ${req.user.username}`)
     // console.log(res.locals.returnTo)
     const redirectUrl = res.locals.returnTo || '/campgrounds';
     res.redirect(redirectUrl) 
