@@ -2,6 +2,12 @@ const Campground = require('../models/campground')
 const { campgroundSchema ,reviewsSchema } = require('../validator')
 const ExpressError = require('../utils/ExpressError')
 
+module.exports.lastpage = (req,res,next)=>{
+        const lastUrl = (req.get('referer'))
+        req.session.returnTo = lastUrl
+        next()
+}
+
 module.exports.isLoggedIn = (req,res,next)=>{
     if(!req.isAuthenticated()){
 

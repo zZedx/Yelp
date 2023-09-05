@@ -40,6 +40,7 @@ module.exports.logoutUser = (req,res)=>{
             return next(err)
         }
     });
+    const redirectUrl = res.locals.returnTo || '/campgrounds';
     req.flash('success' , 'Logged Out')
-    res.redirect('/campgrounds')
+    res.redirect(redirectUrl)
 }

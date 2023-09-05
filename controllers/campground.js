@@ -6,8 +6,11 @@ const geocoder = mapboxGeocoding({accessToken:mapboxToken})
 
 module.exports.index = async (req, res) => {
     const index = await Campground.find({})
-    // console.log(req.user)
-    // console.log(index)
+    // console.log(req.query)
+    if(req.query.search){
+        const index = await Campground.find({title:{$regex : req.query.search , $options:'i'}})
+        return res.render('campgrounds/index', {index})
+    }
     res.render('campgrounds/index', {index})
 }
 

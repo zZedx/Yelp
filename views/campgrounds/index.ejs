@@ -1,9 +1,14 @@
 <% layout('layouts/boilerplate') %>
 <div id="cluster-map" class="mb-4"></div>
-    <h1 class="text mt-4">All Campgrounds</h1>
-    <div>
-        <a href="/campgrounds/new">Add New Campground</a>
+    <h1 class="text my-4 text-center">All Campgrounds</h1>
+    <div class="mb-5 col-md-5 m-auto ">
+        <form action="/campgrounds" method="get" class="d-flex validated-form" novalidate>
+            <!-- <label for="search" class="form-label"></label> -->
+            <input type="text" id="search" name="search" class="form-control rounded-0" placeholder="Search Campgrounds" required>
+            <button class="btn btn-dark rounded-0">Search</button>
+        </form>
     </div>
+    <% if(index.length !== 0){ %>
         <% index.forEach(element => { %>
             <div class="card mb-2 homeCard" >
                 <div class="row">
@@ -26,6 +31,9 @@
                 </div>
             </div>
         <% }); %>
+        <% }else{ %>
+            <h1>No Campgrounds To Show</h1>
+            <% } %>
 
 <script>
     const token = '<%-process.env.MAPBOX_TOKEN%>'
